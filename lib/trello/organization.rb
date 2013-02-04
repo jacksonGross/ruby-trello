@@ -1,7 +1,7 @@
 module Trello
   # Organizations are useful for linking members together.
   class Organization < BasicData
-    register_attributes :id, :name, :display_name, :description, :url,
+    register_attributes :id, :name, :display_name, :description, :url, :memberships,
       :readonly => [ :id, :name, :display_name, :description, :url ]
     validates_presence_of :id, :name
 
@@ -24,6 +24,7 @@ module Trello
       attributes[:display_name] = fields['displayName']
       attributes[:description]  = fields['description']
       attributes[:url]          = fields['url']
+      attributes[:memberships]  = fields['memberships'] if fields['memberships']
       self
     end
 
