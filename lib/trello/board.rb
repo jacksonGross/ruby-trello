@@ -1,6 +1,6 @@
 module Trello
   class Board < BasicData
-    register_attributes :id, :name, :description, :closed, :url, :organization_id, :prefs,
+    register_attributes :id, :name, :description, :closed, :url, :organization_id, :prefs, :pinned, :labelNames, :shortUrl,
       :readonly => [ :id, :url, :organization_id, :prefs ]
     validates_presence_of :id, :name
     validates_length_of   :name,        :in      => 1..16384
@@ -54,8 +54,11 @@ module Trello
       attributes[:name]            = fields['name']            if fields['name']
       attributes[:description]     = fields['desc']            if fields['desc']
       attributes[:closed]          = fields['closed']          if fields.has_key?('closed')
+      attributes[:pinned]          = fields['pinned']          if fields.has_key?('pinned')
       attributes[:url]             = fields['url']             if fields['url']
+      attributes[:shortUrl]        = fields['shortUrl']        if fields['shortUrl']
       attributes[:organization_id] = fields['idOrganization']  if fields['idOrganization']
+      attributes[:labelNames]      = fields['labelNames'] || {}
       attributes[:prefs]           = fields['prefs'] || {}
       self
     end
