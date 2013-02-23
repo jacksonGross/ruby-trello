@@ -78,8 +78,8 @@ module Trello
       end
 
       it "returns a valid url for the avatar" do
-        member.avatar_url(:size => :large).should == "https://trello-avatars.s3.amazonaws.com/abcdef1234567890abcdef1234567890/170.png"
-        member.avatar_url(:size => :small).should == "https://trello-avatars.s3.amazonaws.com/abcdef1234567890abcdef1234567890/30.png"
+        member.avatar_url(:size => :large).should == "//trello-avatars.s3.amazonaws.com/abcdef1234567890abcdef1234567890/170.png"
+        member.avatar_url(:size => :small).should == "//trello-avatars.s3.amazonaws.com/abcdef1234567890abcdef1234567890/30.png"
       end
 
       it "gets the url" do
