@@ -1,6 +1,8 @@
 module Trello
   class Error < StandardError
 
+    attr_accessor :name, :uri, :response_code
+
     def initialize(name, uri, response_code)
       @name = name
       @uri = uri
