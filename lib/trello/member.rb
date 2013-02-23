@@ -38,7 +38,7 @@ module Trello
     #   :small (30x30)
     def avatar_url(options = { :size => :large })
       size = options[:size] == :small ? 30 : 170
-      "https://trello-avatars.s3.amazonaws.com/#{avatar_id}/#{size}.png"
+      "//trello-avatars.s3.amazonaws.com/#{avatar_id}/#{size}.png"
     end
 
     # Returns a list of the boards a member is a part of.
