@@ -49,7 +49,7 @@ module Trello
   autoload :Configuration,     'trello/configuration'
   autoload :HasActions,        'trello/has_actions'
   autoload :Item,              'trello/item'
-  autoload :CheckItemState,         'trello/item_state'
+  autoload :CheckItemState,    'trello/item_state'
   autoload :Label,             'trello/label'
   autoload :List,              'trello/list'
   autoload :Member,            'trello/member'
@@ -59,6 +59,7 @@ module Trello
   autoload :Request,           'trello/net'
   autoload :TInternet,         'trello/net'
   autoload :Token,             'trello/token'
+  autoload :Error,             'trello/error'
 
   module Authorization
     autoload :AuthPolicy,      'trello/authorization'
@@ -69,8 +70,6 @@ module Trello
   # Version of the Trello API that we use by default.
   API_VERSION = 1
 
-  # Raise this when we hit a Trello error.
-  class Error < StandardError; end
   # This specific error is thrown when your access token is invalid. You should get a new one.
   class InvalidAccessToken < StandardError; end
 
