@@ -25,6 +25,7 @@ module Trello
       attributes[:id]        = fields['id']
       attributes[:full_name] = fields['fullName']
       attributes[:username]  = fields['username']
+      attributes[:initials]  = fields['initials']
       attributes[:avatar_id] = fields['avatarHash']
       attributes[:bio]       = fields['bio']
       attributes[:url]       = fields['url']
