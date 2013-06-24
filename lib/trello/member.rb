@@ -70,7 +70,7 @@ module Trello
     #   :filter => [ :none, :members, :public, :all ] # default: all
     # i.e.,
     #    me.organizations(:filter => :public) # retrieves all public organizations
-    many :organizations, :filter => :all
+    many :organizations, :filter => :all, :fields => :all
 
     # Returns a list of notifications for the user
     many :notifications
