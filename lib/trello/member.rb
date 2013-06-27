@@ -1,9 +1,9 @@
 module Trello
   # A Member is a user of the Trello service.
   class Member < BasicData
-    register_attributes :id, :username, :full_name, :avatar_id, :bio, :url, :initials, :memberType, :readonly => [ :id, :username, :avatar_id, :url, :initials, :confirmed, :status ]
+    register_attributes :id, :username, :fullName, :avatarHash, :bio, :url, :initials, :memberType, :readonly => [ :id, :username, :avatarHash, :url, :initials, :confirmed, :status ]
     validates_presence_of :id, :username
-    validates_length_of   :full_name, :minimum => 4
+    validates_length_of   :fullName, :minimum => 4
     validates_length_of   :bio,       :maximum => 16384
 
     include HasActions
@@ -23,10 +23,10 @@ module Trello
     # an Member.
     def update_fields(fields)
       attributes[:id]        = fields['id']
-      attributes[:full_name] = fields['fullName']
+      attributes[:fullName] = fields['fullName']
       attributes[:username]  = fields['username']
       attributes[:initials]  = fields['initials']
-      attributes[:avatar_id] = fields['avatarHash']
+      attributes[:avatarHash] = fields['avatarHash']
       attributes[:bio]       = fields['bio']
       attributes[:url]       = fields['url']
       attributes[:confirmed] = fields['confirmed']
@@ -42,7 +42,7 @@ module Trello
     #   :small (30x30)
     def avatar_url(options = { :size => :large })
       size = options[:size] == :small ? 30 : 170
-      "//trello-avatars.s3.amazonaws.com/#{avatar_id}/#{size}.png"
+      "//trello-avatars.s3.amazonaws.com/#{avatarHash}/#{size}.png"
     end
 
     # Returns a list of the boards a member is a part of.
@@ -84,7 +84,7 @@ module Trello
 
     def update!
       client.put(request_prefix, {
-        :fullName => full_name,
+        :fullName => fullName,
         :bio      => bio
       }).json_into(self)
     end
