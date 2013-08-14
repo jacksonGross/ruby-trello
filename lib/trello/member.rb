@@ -1,7 +1,7 @@
 module Trello
   # A Member is a user of the Trello service.
   class Member < BasicData
-    register_attributes :id, :username, :fullName, :avatarHash, :bio, :url, :initials, :memberType, :readonly => [ :id, :username, :avatarHash, :url, :initials, :confirmed, :status, :email ]
+    register_attributes :id, :username, :fullName, :avatarHash, :bio, :url, :initials, :memberType, :readonly => [ :id, :username, :email, :avatarHash, :url, :initials, :confirmed, :status ]
     validates_presence_of :id, :username
     validates_length_of   :fullName, :minimum => 4
     validates_length_of   :bio,       :maximum => 16384
@@ -36,6 +36,10 @@ module Trello
       self
     end
 
+    def email
+      attributes[:email]
+    end
+    
     # Retrieve a URL to the avatar.
     #
     # Valid values for options are:
