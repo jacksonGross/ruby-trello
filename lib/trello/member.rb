@@ -1,7 +1,7 @@
 module Trello
   # A Member is a user of the Trello service.
   class Member < BasicData
-    register_attributes :id, :username, :fullName, :avatarHash, :bio, :url, :initials, :memberType, :readonly => [ :id, :username, :avatarHash, :url, :initials, :confirmed, :status ]
+    register_attributes :id, :username, :fullName, :avatarHash, :bio, :url, :initials, :memberType, :readonly => [ :id, :username, :avatarHash, :url, :initials, :confirmed, :status, :email ]
     validates_presence_of :id, :username
     validates_length_of   :fullName, :minimum => 4
     validates_length_of   :bio,       :maximum => 16384
@@ -23,15 +23,16 @@ module Trello
     # an Member.
     def update_fields(fields)
       attributes[:id]        = fields['id']
-      attributes[:fullName] = fields['fullName']
+      attributes[:fullName]  = fields['fullName']
       attributes[:username]  = fields['username']
       attributes[:initials]  = fields['initials']
-      attributes[:avatarHash] = fields['avatarHash']
+      attributes[:avatarHash]= fields['avatarHash']
       attributes[:bio]       = fields['bio']
       attributes[:url]       = fields['url']
       attributes[:confirmed] = fields['confirmed']
       attributes[:memberType]= fields['memberType']
       attributes[:status]    = fields['status']
+      attributes[:email]     = fields['email']
       self
     end
 
