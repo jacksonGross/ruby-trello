@@ -30,7 +30,8 @@ module Trello
           :url => request.uri.to_s, 
           :headers => request.headers, 
           :payload => request.body, 
-          :timeout => 10
+          :timeout => 10,
+          :ssl_version => :SSLv23
         )
       end
     end
