@@ -17,6 +17,7 @@ module Trello
             Response.new(200, {}, result)
           end
         rescue Exception => e
+          puts e.inspect
           Response.new(e.http_code, {}, e.http_body)
         end
       end
